@@ -1,36 +1,38 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { fetchSong } from "./store/slices/fetchSong/songSlice";
-import { useDispatch, useSelector } from "react-redux";
+// import { useEffect } from "react";
+// import axios from "axios";
+// import { fetchSong } from "./store/slices/fetchSong/songSlice";
+// import { useDispatch, useSelector } from "react-redux";
+import Main from "./layout/Main";
 
 const App = () => {
-  const track = useSelector((state) => state.song.value);
-  const dispatch = useDispatch();
+  // const track = useSelector((state) => state.song.value);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`https://saavn.sumit.co/api/songs/4pPkHRl2`);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await axios.get(`https://saavn.sumit.co/api/songs/4pPkHRl2`);
 
-        const resData = res.data;
+  //       const resData = res.data;
 
-        const firstTrack = resData.data[0].downloadUrl[4];
+  //       const firstTrack = resData.data[0].downloadUrl[4];
         
-        dispatch(fetchSong(firstTrack));
-      } catch (err) {
-        console.log(err)
-      }
-    }
+  //       dispatch(fetchSong(firstTrack));
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   }
     
-    fetchData()
-  }, [])
+  //   fetchData()
+  // }, [])
   
   return (
     <>
-      <button className="px-3 m-2 border-2 rounded-sm cursor-pointer">Click</button>
-      {track && <audio controls src={track.url}></audio>}
+      <Main />
+      {/* <button className="px-3 m-2 border-2 rounded-sm cursor-pointer">Click</button>
+      {track && <audio controls src={track.url}></audio>} */}
     </>
   )
 }
 
-export default App
+export default App;
